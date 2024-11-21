@@ -1,109 +1,37 @@
-jwt:
-  token: ${JWT_TOKEN:ac7b9c76236ae1e80f181586a980d292a1a6eb14e3beeaa97d01523ef2a571b1}
-
-#logging:
-#  level:
-#    org:
-#      springframework:
-#        security: DEBUG
-
 spring:
   datasource:
     username: ${DB_USER:postgres}
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_SCHEMA:contract}
-    password: ${DB_PASS:1376gtid}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_SCHEMA:tasco}
+    password: ${DB_PASS:123456}
     driver-class-name: org.postgresql.Driver
-#    hikari:
-#      maximum-pool-size: 20
-#      minimum-idle: 10
-#      idle-timeout: 30000
-#      max-lifetime: 1800000
-#      connection-timeout: 20000
-#      leak-detection-threshold: 2000
-
-  quartz:
-    job-store-type: jdbc
-    jdbc:
-      initialize-schema: never  # Set to "never" if the schema is already initialized
-#    overwrite-existing-jobs: true
-    properties:
-      org:
-        quartz:
-          jobStore:
-#            class: org.quartz.impl.jdbcjobstore.JobStoreTX
-            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: 'false'
 
-  application:
-    name: contract
+  main:
+    banner-mode: off
+    web-application-type: none
+    lazy-initialization: true
 
-  task:
-    execution:
-      pool:
-        core-size: 10
-        max-size: 50
-        queue-capacity: 100
-    scheduling:
-      pool:
-        size: 10
+  application:
+    name: tasco
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+logging:
+  level:
+    org.springframework: ERROR
+    org.hibernate: ERROR
+    root: off
 
 server:
   error:
     include-message: always
-#  compression:
-#    enabled: true
-#    min-response-size: 1024
-#    mime-types: text/html, text/xml, text/plain, text/css, application/json, application/javascript
-
-
-
-s3:
-  liara:
-#    endpoint: https://storage.c2.liara.space
-#    access: ablomnn1lsfsrv93
-#    secret: 1a063f15-f94e-4848-ae1b-3719a32d1af7
-    endpoint: http://localhost:9000
-    access: minioadmin
-    secret: minioadmin
-
-security:
-  jwt:
-    exp: 86400000
-
-document:
-  jwt:
-    exp: 3600000
-
-#    this config for custom executor service made in core
-config:
-  executor:
-    size: 10
-
-image-processor:
-  ratio: 0.6
-  scale: 1.0
-
-generator:
-  run: false
-
-garbage:
-  collector:
-    document:
-      time: 86400000
-
-app:
-  cors:
-    allowed-origins: http://localhost:3000

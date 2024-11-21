@@ -1,31 +1,33 @@
-package com.alishahidi.core.domain;
+package com.alishahidi.tasco.core.domain;
 
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
+@Entity
+@Table(name = "tasks")
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Column(nullable = false)
     String title;
+
     String description;
-    Priority priority;
-    LocalDate dueDate;
-    boolean completed;
-    List<String> tags;
 
-    public void markAsCompleted() {
-        this.completed = true;
-    }
+    Integer priority;
 
-    public boolean isOverdue() {
-        return !completed && dueDate.isBefore(LocalDate.now());
-    }
+    @Enumerated(EnumType.STRING)
+    Status status;
 }

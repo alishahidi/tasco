@@ -1,4 +1,4 @@
-package com.alishahidi.adapters.integrations;
+package com.alishahidi.tasco.adapters.integrations;
 
 public class NotificationService {
 }

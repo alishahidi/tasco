@@ -1,4 +1,11 @@
-package com.alishahidi.core.domain;
+package com.alishahidi.tasco.core.domain;
 
-public class Status {
+public enum Status {
+    START,
+    PEND,
+    SUSPEND,
+    DOWN,
+    FAILED,
+    COMPLETE
 }
+

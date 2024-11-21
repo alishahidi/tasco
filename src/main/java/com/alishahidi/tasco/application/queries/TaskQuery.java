@@ -1,4 +1,4 @@
-package com.alishahidi.tasco.application.query;
+package com.alishahidi.tasco.application.queries;
 
 public class TaskQuery {
 }
