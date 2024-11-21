@@ -1,8 +1,6 @@
 package com.alishahidi.tasco;
 
-import com.alishahidi.tasco.application.commands.AddTaskCommand;
-import com.alishahidi.tasco.application.commands.ShowTaskCommand;
-import com.alishahidi.tasco.application.commands.UpdateTaskCommand;
+import com.alishahidi.tasco.application.commands.*;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,6 +20,8 @@ import java.util.Arrays;
         AddTaskCommand.class,
         ShowTaskCommand.class,
         UpdateTaskCommand.class,
+        DeleteTaskCommand.class,
+        ClearTaskCommand.class
 })
 public class TascoApplication implements CommandLineRunner, ExitCodeGenerator {
     private int exitCode;
