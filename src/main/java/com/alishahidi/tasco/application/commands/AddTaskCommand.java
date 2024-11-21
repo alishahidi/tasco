@@ -56,6 +56,7 @@ public class AddTaskCommand implements Callable<Integer> {
         System.out.println("Description: " + (task.getDescription() != null ? task.getDescription() : "N/A"));
         System.out.println("Priority: " + (task.getPriority() != null ? task.getPriority() : "N/A"));
         System.out.println("Status: " + task.getStatus());
+        System.out.println("Created Date: " + task.getCreatedDate());
         System.out.println("----------------------");
     }
 }
