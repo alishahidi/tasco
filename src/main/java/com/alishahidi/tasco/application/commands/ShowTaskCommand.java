@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @CommandLine.Command(name = "show", description = "Show tasks with filtering and sorting options", mixinStandardHelpOptions = true)
 public class ShowTaskCommand implements Callable<Integer> {
 
-    TaskService taskService;
+    final TaskService taskService;
 
     @CommandLine.Option(names = {"-p", "--priority"}, description = "Filter tasks by priority")
     Integer priority;

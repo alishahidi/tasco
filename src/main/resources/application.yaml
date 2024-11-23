@@ -16,15 +16,9 @@ spring:
   main:
     banner-mode: off
     web-application-type: none
-    lazy-initialization: true
 
   application:
     name: tasco
-
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 logging:
   level:
